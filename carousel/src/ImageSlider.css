@@ -1,0 +1,34 @@
+
+.image-slider-container{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.images{
+    display: flex;
+    transition: all 0.3s ease-in-out;
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.btn{
+    all: unset;
+    position: absolute;
+    top: 50%;
+    color: grey;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.btn.prev{
+    left: 1rem;
+}
+
+.btn.next{
+    right: 1rem;
+}
