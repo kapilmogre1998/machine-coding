@@ -22,7 +22,7 @@ body{
     display: flex;
     gap: 14px;
     white-space: nowrap;
-    /* animation: autoScroll 30s linear infinite; */
+    animation: autoScroll 30s linear infinite;
 }
 
 .logos-container::before,
