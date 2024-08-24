@@ -22,8 +22,13 @@ const ImageSlider = (props) => {
                 ))
             }
         </div>
-        <button className="btn prev" onClick={handlePrev} >Prev</button>
-        <button className="btn next" onClick={handleNext} >Next</button>
+        <button className="slider-btn prev-btn" onClick={handlePrev} ></button>
+        <button className="slider-btn next-btn" onClick={handleNext} ></button>
+        <ul className='dot-container' >
+            {
+                Array(images.length).fill(0).map((el, index) => <li onClick={() => setCurrentImageIndex(index)} className={currentImageIndex === index ? 'active' : ''} key={index} ></li>)
+            }
+        </ul>
     </div>
   )
 }
