@@ -82,6 +82,7 @@
     border-radius: 8px;
     border: 2px solid grey;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .dot-container .active{
