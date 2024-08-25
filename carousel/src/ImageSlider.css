@@ -3,6 +3,7 @@
     margin: 0 auto;
     position: relative;
     height: 100%;
+    cursor: pointer;
 }
 
 .images {
@@ -20,13 +21,18 @@
 
 .slider-btn {
     all: unset;
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     position: absolute;
     top: 50%;
     font-size: 1.5rem;
     cursor: pointer;
     background-color: grey;
+}
+
+.disable-btn{
+    opacity: 0.25;
+    cursor: not-allowed;
 }
 
 .prev-btn {
@@ -43,8 +49,8 @@
     transform: rotate(135deg);
     position: absolute;
     z-index: 2;
-    top: 20px;
-    left: 20px;
+    top: 25px;
+    left: 27px;
 }
 
 .next-btn {
@@ -61,8 +67,8 @@
     transform: rotate(-45deg);
     position: absolute;
     z-index: 2;
-    top: 20px;
-    left: 20px;
+    top: 25px;
+    left: 23px;
 }
 
 .dot-container{
