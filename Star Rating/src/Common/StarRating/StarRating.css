@@ -1,0 +1,15 @@
+.star-rating-container{}
+
+.star-rating-content{
+    display: flex;
+    font-size: 42px;
+    gap: 1rem;
+}
+
+.star{
+    cursor: pointer;
+}
+
+.gold{
+    color: gold;
+}
