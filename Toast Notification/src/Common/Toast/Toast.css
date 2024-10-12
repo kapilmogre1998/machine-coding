@@ -1,0 +1,44 @@
+
+.toast-msg{
+    display: flex;
+    gap: 0.25rem;
+    padding: 20px 32px;
+    color: white;
+    border-radius: 4px;
+    align-items: center;
+    position: relative;
+}
+
+.toast-msg .close-btn{
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.icon{
+    font-size: 24px;
+}
+
+.toast-msg::after{
+    content: '';
+    width: 100%;
+    background-color: white;
+    height: 4px;
+    bottom: 0px;
+    position: absolute;
+    left: 0px;
+    animation: progress 5s ease forwards;
+    border-radius: 2px;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to{
+        width: 0%;
+    }
+}

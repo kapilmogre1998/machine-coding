@@ -24,7 +24,7 @@ const StarRating = ({ count = 5, click }) => {
                             <div
                                 key={id}
                                 className={`star ${isHover ? 'gold' : ''} ${id + 1 <= clickedStarCount ? 'gold' : ''}`}
-                                onMouseEnter={() => handleMouseEnter(id)}
+                                onMouseOver={() => handleMouseEnter(id)}
                                 onMouseLeave={() => setHoverRating(0)}
                                 onClick={() => handleClickOnStar(id)}
                             >
