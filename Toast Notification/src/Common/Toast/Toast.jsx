@@ -33,7 +33,7 @@ const Toast = ({ id, type, message, delay, modifyList, bgClr, position }) => {
     }, [])
 
     return (
-        <div className={`toast-msg`} style={{ backgroundColor: bgClr }} >
+        <div className={`toast-msg ${position}`} style={{ backgroundColor: bgClr }} >
             <div className='icon' >{toastIcon(type)}</div>
             <div>{type} {id.substring(1, 7)}</div>
             <div>{message}</div>

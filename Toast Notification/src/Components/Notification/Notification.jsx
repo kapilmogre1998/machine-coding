@@ -6,7 +6,7 @@ import { TOAST_MSG } from './Constant';
 
 const ToastNotification = () => {
     const [notificationList, setNotificationList] = useState([]);
-    const position = 'top-right'
+    const [toastPosition, setToastPosition] = useState('right-top');
 
     const handleClickOnButton = (type) => {
         setNotificationList(prev => ([
@@ -18,6 +18,10 @@ const ToastNotification = () => {
         ]))
     }
 
+    const handleChangeToastPos = (e) => {
+        setToastPosition(e.target.value)
+    }
+
     return (
         <div className='toast-notification-container' >
             <div className='buttons' >
@@ -26,14 +30,20 @@ const ToastNotification = () => {
                 <button onClick={() => handleClickOnButton('WARNING')} >Warning</button>
             </div>
 
-            <div className={`${position} notification-list`}>
+            <div className={`notification-list ${toastPosition}`}>
                 {
                     notificationList.length ? (
                         notificationList.map((item) => (
-                            <Toast key={item.id} {...item} modifyList={setNotificationList} position={position} />
+                            <Toast key={item.id} {...item} modifyList={setNotificationList} position={toastPosition} />
                         ))
                     ) : null
                 }
+            </div>
+            <div className='select-toast-position' >
+                <select name="select-toast" id="select-toast" onChange={handleChangeToastPos} >
+                    <option value="right-top">Right Top</option>
+                    <option value="right-bottom">Right Bottom</option>
+                </select>
             </div>
         </div>
     )

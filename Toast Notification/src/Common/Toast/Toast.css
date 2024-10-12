@@ -9,6 +9,10 @@
     position: relative;
 }
 
+.toast-msg.right-top, .toast-msg.right-bottom{
+    animation: slide 0.6s ease;
+}
+
 .toast-msg .close-btn{
     position: absolute;
     right: 8px;
@@ -40,5 +44,14 @@
     }
     to{
         width: 0%;
+    }
+}
+
+@keyframes slide {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0%);
     }
 }
