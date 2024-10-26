@@ -1,11 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 import useDebounce from '../Hooks/useDebounce'
 import './AutoComplete.css'
 
 const AutoComplete = () => {
   const [inputValue, setInputValue] = useState('')
   const [productList, setProductList] = useState([])
-  const abortController = useRef(null)
+  const [selectSearchItem, setSelectSearchItem] = useState(-1);
   
   const fetchData = async (val, signal) => {
       try {
@@ -21,13 +21,21 @@ const AutoComplete = () => {
     
   const debounceFn = useDebounce(fetchData, 1000)
 
+  const handleKeyDown = (e) => {
+    if(e.key === 'ArrowUp' && selectSearchItem > 0){
+      setSelectSearchItem(prev => prev - 1)
+    } else if(e.key === 'ArrowDown' && selectSearchItem < productList.length - 1){
+      setSelectSearchItem(prev => prev + 1)
+    }
+  }
+
   useEffect(() => {
-    abortController.current = new AbortController();
-    const signal = abortController.current.signal;
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
     debounceFn(inputValue, signal);
 
-    return () => abortController.current.abort()
+    return () => abortController.abort()
   }, [inputValue])
 
   return (
@@ -37,25 +45,27 @@ const AutoComplete = () => {
         onChange={(e) => setInputValue(e.target.value)}
         value={inputValue}
         placeholder="Search Product"
+        className='search-input'
+        onKeyDown={handleKeyDown}
       />
-      <ul>
-      {productList.map((product) => {
+      <ul className='search-result' >
+      {productList.length ? productList.map((product, id) => {
           const index = product.title.toLowerCase().indexOf(inputValue.toLowerCase());
           if (index === -1) {
             // No match found, return the full title without highlighting
-            return <li key={product.id}>{product.title}</li>;
+            return <li key={product.id} className={selectSearchItem === id ? 'match-search-input' : ''} >{product.title}</li>;
           }
 
           return (
-            <li key={product.id}>
+            <li key={product.id} className={selectSearchItem === id ? 'match-search-input' : ''}  >
               <span>{product.title.substring(0, index)}</span>
               <span className="string-match">
                 {product.title.substring(index, index + inputValue.length)}
               </span>
               <span>{product.title.substring(index + inputValue.length)}</span>
             </li>
-          );
-        })}
+          )
+        }) : 'loading...'}
       </ul>
     </div>
   )
